@@ -22,8 +22,8 @@ rm -rf platform-tools.zip
 cat <<EOT >> .profile
 
 # add Android SDK platform tools to path
-if [ -d "$HOME/platform-tools" ] ; then
-    PATH="$HOME/platform-tools:$PATH"
+if [ -d "${HOME}/platform-tools" ] ; then
+    PATH="${HOME}/platform-tools:$PATH"
 fi
 EOT
 source ~/.profile
@@ -32,7 +32,7 @@ source ~/.profile
 GIT_USERNAME=$(git config --get user.name)
 GIT_EMAIL=$(git config --get user.email)
 if [[ -z ${GIT_USERNAME} ]]; then
-    echo "One last thing, please enter your name and email of your git account"
+    echo "Please enter the name and email address of your git account"
     echo "By the way, it wont be verified :)"
     echo ""
     echo -n "Enter your name: "
@@ -47,6 +47,9 @@ fi
 echo "Git account has been setup."
 
 sudo apt-get update && sudo apt-get upgrade -y
+
+#Just gonna do this again because sometimes it fails the first time
+sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev python2.7 python3 -y
 
 echo ""
 echo "Your environment is ready. Happy developing!"
